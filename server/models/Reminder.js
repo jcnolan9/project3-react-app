@@ -16,6 +16,10 @@ const reminderSchema = new Schema({
     message: {
         type: String,
         maxlength: 200
+    },
+    reminderOfUser: {
+        type: String,
+        required: true
     }
 })
 

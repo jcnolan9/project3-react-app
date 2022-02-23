@@ -24,6 +24,10 @@ const contactSchema = new Schema({
         minlength: 10,
         maxlength: 10
     },
+    contactOfUser: {
+        type: String,
+        required: true
+    }
 })
 
 const Contact = model('Contact', contactSchema)
