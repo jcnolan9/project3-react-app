@@ -18,7 +18,7 @@ const contactSchema = new Schema({
         match: [/.+@.+\..+/, 'Must match an email address!'] 
     },
     phoneNumber: {
-        type: Number,
+        type: String,
         required: true,
         unique: true,
         minlength: 10,

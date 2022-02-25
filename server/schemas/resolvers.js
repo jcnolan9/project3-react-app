@@ -4,6 +4,15 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
+        users: async () => {
+            return User.find().populate('contacts').populate('reminders')
+        },
+        contacts: async () => {
+            return Contact.find()
+        },
+        reminders: async () => {
+            return Reminder.find()
+        },
         userContacts: async (parent, { userName }) => {
             return User.findOne({ userName }).populate('contacts')
         },
@@ -58,8 +67,8 @@ const resolvers = {
         removeContact: async (parent, { contactId }) => {
             return Thought.findOneAndDelete({ _id: contactId })
         },
-        removeReminder: async (parent, { reminderID }) => {
-            return Reminder.findOneAndDelete({ _id: reminderID })
+        removeReminder: async (parent, { reminderId }) => {
+            return Reminder.findOneAndDelete({ _id: reminderId })
         }
     }
 }
