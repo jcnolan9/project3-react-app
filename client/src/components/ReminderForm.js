@@ -68,8 +68,8 @@ const ReminderForm = ({ contacts }) => {
                             <select name="contacts" id="contactList" value={reminderContact} onChange={handleChange}>
                                 {
                                     contacts.map((userContact) => {
-                                        <option key={userContact} value={userContact}>
-                                            {userContact}
+                                        <option key={userContact._id} value={userContact._id}>
+                                            {`${userContact.firstName} ${userContact.lastName}`}
                                         </option>
                                     })
                                 }
