@@ -1,41 +1,44 @@
-import decode from 'jwt-decode';
+import { gql } from '@apollo/client';
 
-class AuthService {
-  getProfile() {
-    return decode(this.getToken());
-  }
-
-  loggedIn() {
-    const token = this.getToken();
-    // If there is a token and it's not expired, return `true`
-    return token && !this.isTokenExpired(token) ? true : false;
-  }
-
-  isTokenExpired(token) {
-    // Decode the token to get its expiration time that was set by the server
-    const decoded = decode(token);
-    // If the expiration time is less than the current time (in seconds), the token is expired and we return `true`
-    if (decoded.exp < Date.now() / 1000) {
-      localStorage.removeItem('id_token');
-      return true;
+export const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
     }
-    // If token hasn't passed its expiration time, return `false`
-    return false;
   }
+`;
 
-  getToken() {
-    return localStorage.getItem('id_token');
+export const ADD_REMINDER = gql`
+  mutation addReminder($contact: ID!, $contactType: String!, $date: String!, $message: String!, $reminderOfUser: String!) {
+    addReminder(contact: $contact, $contactType: contactType, date: $date, message: $message, reminderOfUser: $reminderOfUser) {
+      _id
+      contact {
+          firstName
+          lastName
+      }
+      contactType
+      date
+      message
+      reminderOfUser
+    }
   }
+`;
 
-  login(idToken) {
-    localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
+export const ADD_CONTACT = gql`
+  mutation addThought($thoughtText: String!, $thoughtAuthor: String!) {
+    addThought(thoughtText: $thoughtText, thoughtAuthor: $thoughtAuthor) {
+      _id
+      thoughtText
+      thoughtAuthor
+      createdAt
+      comments {
+        _id
+        commentText
+      }
+    }
   }
-
-  logout() {
-    localStorage.removeItem('id_token');
-    window.location.reload();
-  }
-}
-
-export default new AuthService();
+`;
