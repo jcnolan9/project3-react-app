@@ -1,0 +1,62 @@
+[
+    { 
+        "contact": "621a7ce11eb68602b8899b25", 
+        "contactType": "text", 
+        "message": "Give them a text. It's been such a long time", 
+        "reminderOfUser": "bkernighan"
+    },
+    { 
+        "contact": "", 
+        "contactType": "text",  
+        "message": "Give them a text. It's been such a long time", 
+        "reminderOfUser": "mkanatalexander"
+    },
+    { 
+        "contact": "", 
+        "contactType": "text", 
+        "message": "Give them a text. It's been such a long time", 
+        "reminderOfUser": "mjones"
+    },
+    { 
+        "contact": "", 
+        "contactType": "email", 
+        "message": "Shoot them an email. It's been such a long time", 
+        "reminderOfUser": "kbeck"
+    },
+    { 
+        "contact": "", 
+        "contactType": "email", 
+        "message": "Shoot them an email. It's been such a long time", 
+        "reminderOfUser": "evberard"
+    },
+    { 
+        "contact": "", 
+        "contactType": "email", 
+        "message": "Shoot them an email. It's been such a long time", 
+        "reminderOfUser": "akay"
+    },
+    { 
+        "contact": "", 
+        "contactType": "phone call", 
+        "message": "Give them a phone call. It's been such a long time", 
+        "reminderOfUser": "jmills"
+    },
+    { 
+        "contact": "", 
+        "contactType": "phone call", 
+        "message": "Give them a phone call. It's been such a long time", 
+        "reminderOfUser": "dthomas"
+    },
+    { 
+        "contact": "", 
+        "contactType": "phone call", 
+        "message": "Give them a phone call. It's been such a long time", 
+        "reminderOfUser": "dknuth"
+    },
+    { 
+        "contact": "", 
+        "contactType": "phone call", 
+        "message": "Give them a phone call. It's been such a long time", 
+        "reminderOfUser": "blernantino"
+    }
+]

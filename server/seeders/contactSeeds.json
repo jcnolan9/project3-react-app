@@ -1,0 +1,72 @@
+[
+    {
+        "firstName":"Tom",
+        "lastName": "Reeves",
+        "email":"treeves@company.com",
+        "phoneNumber":"1235555555",
+        "contactOfUser": "bkernighan"
+    },
+    {
+        "firstName":"Joe",
+        "lastName": "Blow",
+        "email":"jblow@company.com",
+        "phoneNumber":"1235555556",
+        "contactOfUser": "mkanatalexander"
+    },
+    {
+        "firstName":"Tina",
+        "lastName": "Jackson",
+        "email":"tjackson@company.com",
+        "phoneNumber":"1235555557",
+        "contactOfUser": "mjones"
+    },
+    {
+        "firstName":"Tati",
+        "lastName": "Ernstein",
+        "email":"tern@company.com",
+        "phoneNumber":"1235555555",
+        "contactOfUser": "kbeck"
+    },
+    {
+        "firstName":"Cole",
+        "lastName": "Jetson",
+        "email":"cjet@company.com",
+        "phoneNumber":"1235555555",
+        "contactOfUser": "evberard"
+    },
+    {
+        "firstName":"Marco",
+        "lastName": "Barken",
+        "email":"mbark@company.com",
+        "phoneNumber":"1235555555",
+        "contactOfUser": "akay"
+    },
+    {
+        "firstName":"Megan",
+        "lastName": "Good",
+        "email":"mgood@company.com",
+        "phoneNumber":"1235555555",
+        "contactOfUser": "jmills"
+    },
+    {
+        "firstName":"Lawrence",
+        "lastName": "Komo",
+        "email":"lkomo@company.com",
+        "phoneNumber":"1235555555",
+        "contactOfUser": "dthomas"
+    },
+    {
+        "firstName":"Paula",
+        "lastName": "Gaga",
+        "email":"pgaga@company.com",
+        "phoneNumber":"1235555555",
+        "contactOfUser": "dknuth"
+    },
+    {
+        "firstName":"Ram",
+        "lastName": "Freeman",
+        "email":"rfree@company.com",
+        "phoneNumber":"1235555555",
+        "contactOfUser": "blernantino"
+    }
+]

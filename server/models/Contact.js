@@ -20,9 +20,9 @@ const contactSchema = new Schema({
     phoneNumber: {
         type: String,
         required: true,
-        unique: true,
         minlength: 10,
-        maxlength: 10
+        maxlength: 10,
+        unique: false
     },
     contactOfUser: {
         type: String,

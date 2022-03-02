@@ -5,19 +5,48 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         users: async () => {
-            return User.find().populate('contacts').populate('reminders')
+            return User.find().populate('contacts').populate({
+                path: "reminders", // populate blogs
+                populate: {
+                   path: "contact" // in blogs, populate comments
+                }
+             })
         },
+        user: async (parent, { userName }) => {
+            return User.findOne({ userName }).populate('contacts').populate({
+                path: 'reminders',
+                populate: {
+                    path: 'contact'
+                }
+            })
+        }, 
         contacts: async () => {
             return Contact.find()
         },
         reminders: async () => {
-            return Reminder.find()
+            return Reminder.find().populate('contact')
         },
         userContacts: async (parent, { userName }) => {
-            return User.findOne({ userName }).populate('contacts')
+            const { contacts } = await User.findOne({ userName }).populate('contacts').populate({
+                path: 'reminders',
+                populate: {
+                    path: 'contact'
+                }
+            })
+
+            return contacts
         },
         userReminders: async(parent, { userName }) => {
-            return User.findOne({ userName }).populate('reminders')
+            console.log(userName)
+            const { reminders } = await User.findOne({ userName }).populate({
+                path: 'reminders',
+                populate: {
+                    path: 'contact'
+                }
+            })
+            
+            console.log("REMINDERS", reminders)
+            return reminders
         }
     },
 
@@ -63,6 +92,12 @@ const resolvers = {
             )
 
             return reminder
+        },
+        updateReminder: async(parent, { reminderId, date, message }) => {
+            await Reminder.findOneAndUpdate(
+                { _id: reminderId },
+                { date: date, message: message }
+            )
         },
         removeContact: async (parent, { contactId }) => {
             return Thought.findOneAndDelete({ _id: contactId })

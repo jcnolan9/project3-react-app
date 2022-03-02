@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose')
+const dateFormat = require('../utils/dateFormat')
 
 const reminderSchema = new Schema({
     contact: {
@@ -11,7 +12,8 @@ const reminderSchema = new Schema({
     },
     date: {
         type: Date,
-        required: true
+        default: Date.now(),
+        get: (timestamp) => dateFormat(timestamp)
     },
     message: {
         type: String,
@@ -20,7 +22,7 @@ const reminderSchema = new Schema({
     reminderOfUser: {
         type: String,
         required: true
-    }
+    },
 })
 
 const Reminder = model('Reminder', reminderSchema)
