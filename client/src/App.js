@@ -14,6 +14,9 @@ import Login from './pages/Login';
 import SingleReminder from './pages/SingleReminder';
 import Header from './components/Header';
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists

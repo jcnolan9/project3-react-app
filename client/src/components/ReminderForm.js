@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_REMINDER } from '../../utils/mutations';
-import Auth from '../../utils/auth';
+import { ADD_REMINDER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 const ReminderForm = ({ contacts }) => {
 
@@ -67,11 +67,11 @@ const ReminderForm = ({ contacts }) => {
                             <label for="contactList">Contact:</label>
                             <select name="contacts" id="contactList" value={reminderContact} onChange={handleChange}>
                                 {
-                                    contacts.map((userContact) => {
+                                    contacts.map((userContact) => (
                                         <option key={userContact._id} value={userContact._id}>
                                             {`${userContact.firstName} ${userContact.lastName}`}
                                         </option>
-                                    })
+                                    ))
                                 }
                             </select>
                             
