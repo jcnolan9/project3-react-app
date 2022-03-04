@@ -72,7 +72,8 @@ const ReminderForm = ({ contacts, user }) => {
                     <form onSubmit={handleFormSubmit}>
                         <div>
                             <label for="contactList">Contact:</label>
-                            <select name="contact" id="contactList"  onChange={handleChange}>
+                            <select name="contact" id="contactList" value={reminderContact} onChange={handleChange}>
+                                <option key="0" value=""></option>
                                 {
                                     contacts.map((userContact) => (
                                         <option key={userContact._id} value={userContact._id}>
