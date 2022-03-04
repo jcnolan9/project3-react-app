@@ -20,7 +20,7 @@ const Header = () => {
             <div>
                 {Auth.loggedIn() ? (
                     <>
-                       <p>Welcome {Auth.getProfile().data.email}</p> 
+                       <p>Welcome {Auth.getProfile().data.userName}</p> 
                        <button onClick={logout}>Logout</button>
                     </>
                     ) : (

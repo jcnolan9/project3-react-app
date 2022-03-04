@@ -11,7 +11,7 @@ const ReminderForm = ({ contacts, user }) => {
 
     const [reminderContact, setReminderContact] = useState('')
     const [reminderContactType, setReminderContactType] = useState('')
-    const [reminderDate, setReminderDate] = useState(Date.now().toLocaleString('en-US'))
+    const [reminderDate, setReminderDate] = useState(Date.now())
     const [reminderMessage, setReminderMessage] = useState('')
 
     const [addReminder, { error, data }] = useMutation(ADD_REMINDER)
@@ -59,8 +59,17 @@ const ReminderForm = ({ contacts, user }) => {
                 setReminderMessage(value)
                 break
         }
-        console.log("contact", reminderContact)
+        console.log("contact", {
+            contact: reminderContact,
+            contactType: reminderContactType,
+            date: reminderDate,
+            message: reminderMessage,
+            reminderOfUser: user
+        })
     }
+
+    //if there is only 1 option in the select tag below the onChange for whatever reason never registers
+    //adding a blank tag as the first option and forcing the user to switch the mapped option below fixes the issue
 
     return (
         <div>
@@ -96,7 +105,7 @@ const ReminderForm = ({ contacts, user }) => {
                             <br></br>
 
                             <label for="reminder-date">Date:</label>
-                            <input type="text" name='date' id="reminder-date"></input>
+                            <input type="text" name='date' id="reminder-date" value={reminderDate} onChange={handleChange}></input>
                             <br></br>
 
                             <label for="message">Message:</label><br></br>

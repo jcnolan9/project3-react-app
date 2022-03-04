@@ -13,13 +13,15 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_REMINDER = gql`
-  mutation addReminder($contact: ID!, $contactType: String!, $date: String!, $message: String!, $reminderOfUser: String!) {
+mutation addReminder($contact: ID!, $contactType: String!, $date: String!, $message: String!, $reminderOfUser: String!) {
     addReminder(contact: $contact, contactType: $contactType, date: $date, message: $message, reminderOfUser: $reminderOfUser) {
       _id
       contact {
           firstName
           lastName
       }
+      message
+      reminderOfUser
     }
   }
 `;

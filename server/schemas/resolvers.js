@@ -97,10 +97,13 @@ const resolvers = {
             return contact
         },
         addReminder: async (parent, { contact, contactType, date, message, reminderOfUser }) => {
+            
+            console.log("Attempting to Add Reminder")
             const reminder = await Reminder.create({ contact, contactType, date, message, reminderOfUser })
 
+    
             await User.findOneAndUpdate(
-                { username: reminderOfUser},
+                { userName: reminderOfUser},
                 { $addToSet: { reminders: reminder._id }}
             )
 
