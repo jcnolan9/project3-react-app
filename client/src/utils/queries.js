@@ -1,13 +1,13 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER_REMINDERS = gql`
-  query userReminders($username: String!) {
-    userReminders(username: $username) {
+  query userReminders($userName: String!) {
+    userReminders(userName: $userName) {
       _id
       contact {
         _id
         firstName
-        LastName
+        lastName
       }
       contactType
       date
@@ -17,11 +17,11 @@ export const QUERY_USER_REMINDERS = gql`
 `;
 
 export const QUERY_USER_CONTACTS = gql`
-  query userContacts {
-    contacts {
-      _id
-      firstName
-      lastName
+  query userContacts($userName: String!) {
+    userContacts (userName: $userName) {
+        _id
+        firstName
+        lastName
     }
   }
 `;

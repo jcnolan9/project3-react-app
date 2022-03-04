@@ -25,11 +25,15 @@ const Login = (props) => {
       console.log(formState);
       try {
         const { data } = await login({
-          variables: { ...formState },
+          variables: { 
+              email: formState.email,
+              password: formState.password
+           },
         });
-  
+        
         Auth.login(data.login.token);
       } catch (e) {
+        console.log("Helllooooooo")
         console.error(e);
       }
   

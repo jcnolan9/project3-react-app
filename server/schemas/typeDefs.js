@@ -40,8 +40,8 @@ const typeDefs = gql`
         user: User
         contacts: [Contact]
         reminders: [Reminder]
-        userContacts(userName: String): [Contact] 
-        userReminders(userName: String): [Reminder] 
+        userContacts(userName: String!): [Contact] 
+        userReminders(userName: String!): [Reminder] 
     }
 
     type Mutation {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_REMINDER } from '../utils/mutations';
+ import { ADD_REMINDER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const ReminderForm = ({ contacts }) => {
@@ -12,7 +12,9 @@ const ReminderForm = ({ contacts }) => {
     const [reminderDate, setReminderDate] = useState(Date.now().toLocaleString('en-US'))
     const [reminderMessage, setReminderMessage] = useState('')
 
-    const [addReminder, { error }] = useMutation(ADD_REMINDER)
+  const [addReminder, { error, data }] = useMutation(ADD_REMINDER)
+
+//   console.log("contacts", contacts)
     
     const handleFormSubmit = async (event) => {
         event.preventDefault()
@@ -24,9 +26,11 @@ const ReminderForm = ({ contacts }) => {
                     contactType: reminderContactType,
                     date: reminderDate,
                     message: reminderMessage,
-                    reminderOfUser: Auth.getProfile().data.username
+                    reminderOfUser: Auth.getProfile().data.userName
                 }
             })
+
+            
 
             setReminderContact('')
             setReminderContactType('')
@@ -54,10 +58,12 @@ const ReminderForm = ({ contacts }) => {
                 setReminderMessage(value)
                 break
         }
+        console.log(reminderContact)
     }
 
     return (
         <div>
+           
             {Auth.loggedIn() ?
                 <>
                     <h2>Create Reminder</h2>
@@ -74,19 +80,26 @@ const ReminderForm = ({ contacts }) => {
                                     ))
                                 }
                             </select>
+                            <br></br>
                             
-                            <label for="text">Text</label>
+                            
                             <input type="radio" id="text" name="contactType" value="text" onChange={handleChange} />
-                            <label for="email">Email</label>
+                            <label for="text">Text</label>
+                            
                             <input type="radio" id="email" name="contactType" value="email" onChange={handleChange}/>
-                            <label for="text">Phone Call</label>
+                            <label for="email">Email</label>
+                            
                             <input type="radio" id="phone" name="contactType" value="phone" onChange={handleChange}/>
-
+                            <label for="text">Phone Call</label>
+                            <br></br>
 
                             <label for="reminder-date">Date:</label>
                             <input type="text" name='date' id="reminder-date"></input>
+                            <br></br>
 
-                            <textarea name="message" 
+                            <label for="message">Message:</label><br></br>
+                            <textarea name="message"
+                                id="message" 
                                 placeholder="What do want to talk about..." 
                                 value={reminderMessage}
                                 onChange={handleChange}

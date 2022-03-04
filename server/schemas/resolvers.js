@@ -27,26 +27,36 @@ const resolvers = {
             return Reminder.find().populate('contact')
         },
         userContacts: async (parent, { userName }) => {
-            const { contacts } = await User.findOne({ userName }).populate('contacts').populate({
-                path: 'reminders',
-                populate: {
-                    path: 'contact'
-                }
-            })
+            console.log()
+            return Contact.find({ contactOfUser: userName })
 
-            return contacts
+            // const { contacts } = await User.findOne({ userName }).populate('contacts').populate({
+            //     path: 'reminders',
+            //     populate: {
+            //         path: 'contact'
+            //     }
+            // })
+
+            // console.log('COntacts!!', contacts)
+            // return contacts
         },
         userReminders: async(parent, { userName }) => {
-            console.log(userName)
-            const { reminders } = await User.findOne({ userName }).populate({
-                path: 'reminders',
-                populate: {
-                    path: 'contact'
-                }
-            })
+
+            // console.log("REMINDERS!!!", Reminder.find({ reminderOfUser: userName }).populate('contact'))
+            return Reminder.find({ reminderOfUser: userName }).populate('contact')
             
-            console.log("REMINDERS", reminders)
-            return reminders
+            
+
+            // console.log(userName)
+            // const { reminders } = await User.findOne({ userName }).populate({
+            //     path: 'reminders',
+            //     populate: {
+            //         path: 'contact'
+            //     }
+            // })
+            
+            // console.log("REMINDERS", reminders)
+            // return reminders
         }
     },
 
@@ -57,6 +67,7 @@ const resolvers = {
             return { token, user }
         },
         login: async (parent, { email, password }) => {
+            console.log("HIT SERVERRRRRR")
             const user = await User.findOne({ email })
 
             if (!user) {
@@ -70,6 +81,8 @@ const resolvers = {
               }
         
               const token = signToken(user);
+
+              console.log(token)
         
               return { token, user };
         },

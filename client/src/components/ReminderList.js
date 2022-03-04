@@ -2,9 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ReminderList = ({ reminders, title }) => {
+    // console.log("reminders", reminders)
+   
     if(!reminders.length) {
         return (<h2>No Reminders Yet. Create some to keep in touch with your contacts!</h2>)
     }
+
+    
 
     return (
         <div>

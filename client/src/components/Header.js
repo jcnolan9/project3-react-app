@@ -7,7 +7,9 @@ const Header = () => {
     const logout = (event) => {
         event.preventDefault();
         Auth.logout();
-      }
+    }
+
+    //   console.log("username", Auth.getProfile().data.userName)
 
     return (
         <header>
@@ -17,7 +19,7 @@ const Header = () => {
             <div>
                 {Auth.loggedIn() ? (
                     <>
-                       <p>Welcome {Auth.getProfile().data.usernName}</p> 
+                       <p>Welcome {Auth.getProfile().data.userName}</p> 
                        <button onClick={logout}>Logout</button>
                     </>
                     ) : (
