@@ -12,8 +12,8 @@ const resolvers = {
                 }
              })
         },
-        user: async (parent, { userName }) => {
-            return User.findOne({ userName }).populate('contacts').populate({
+        user: async (parent, { _id }) => {
+            return User.findOne({ _id }).populate('contacts').populate({
                 path: 'reminders',
                 populate: {
                     path: 'contact'

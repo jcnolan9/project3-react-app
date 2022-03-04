@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import ReminderForm from '../components/ReminderForm';
 import ReminderList from '../components/ReminderList';
 
-import { QUERY_USER_CONTACTS, QUERY_USER_REMINDERS } from '../utils/queries';
+import { QUERY_USER_CONTACTS, QUERY_USER_REMINDERS, QUERY_USER } from '../utils/queries';
 import Auth from '../utils/auth'
 
 
@@ -11,6 +11,14 @@ import Auth from '../utils/auth'
 const Home = () => {
     //this must be named "data"
     //loading, data, and err are keywords
+    // let personLoggedIn
+
+    
+    const user = Auth.getProfile().data.userName
+    
+
+    // console.log("Logged In:", personLoggedIn)
+
     const { loading, data } = useQuery(QUERY_USER_CONTACTS, {
         variables: { userName: "dknuth" }
     })
@@ -31,11 +39,23 @@ const Home = () => {
     const reminders = remindersData?.userReminders || []
     console.log("remindersData", reminders)
 
+    // let myUser
+
+
+
+    // if(Auth.loggedIn()) {
+    //     const { loading: userLoading, data: userData } = useQuery(QUERY_USER, {
+    //         variables: {_id: Auth.getProfile().data._id}
+    //     })
+    //     myUser = userData?.user || []
+    //     console.log("userData", myUser)
+    // }
+    
     return (
         <main>
             
             <div>
-                <ReminderForm contacts={contacts}/>
+                <ReminderForm contacts={contacts} user={user}/>
             </div>
             <div>
                 <ReminderList reminders={reminders} title="Upcoming Reminders"/>

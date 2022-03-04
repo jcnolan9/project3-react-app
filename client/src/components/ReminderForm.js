@@ -5,16 +5,19 @@ import { useMutation } from '@apollo/client';
  import { ADD_REMINDER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const ReminderForm = ({ contacts }) => {
+const ReminderForm = ({ contacts, user }) => {
+
+    console.log("MyUser:", user)
 
     const [reminderContact, setReminderContact] = useState('')
     const [reminderContactType, setReminderContactType] = useState('')
     const [reminderDate, setReminderDate] = useState(Date.now().toLocaleString('en-US'))
     const [reminderMessage, setReminderMessage] = useState('')
 
-  const [addReminder, { error, data }] = useMutation(ADD_REMINDER)
+    const [addReminder, { error, data }] = useMutation(ADD_REMINDER)
 
-//   console.log("contacts", contacts)
+
+    // console.log("Logged In:", Auth.getProfile().data.username)
     
     const handleFormSubmit = async (event) => {
         event.preventDefault()
@@ -26,11 +29,9 @@ const ReminderForm = ({ contacts }) => {
                     contactType: reminderContactType,
                     date: reminderDate,
                     message: reminderMessage,
-                    reminderOfUser: Auth.getProfile().data.userName
+                    reminderOfUser: user
                 }
             })
-
-            
 
             setReminderContact('')
             setReminderContactType('')
@@ -58,7 +59,7 @@ const ReminderForm = ({ contacts }) => {
                 setReminderMessage(value)
                 break
         }
-        console.log(reminderContact)
+        console.log("contact", reminderContact)
     }
 
     return (
@@ -71,7 +72,7 @@ const ReminderForm = ({ contacts }) => {
                     <form onSubmit={handleFormSubmit}>
                         <div>
                             <label for="contactList">Contact:</label>
-                            <select name="contacts" id="contactList" value={reminderContact} onChange={handleChange}>
+                            <select name="contact" id="contactList"  onChange={handleChange}>
                                 {
                                     contacts.map((userContact) => (
                                         <option key={userContact._id} value={userContact._id}>

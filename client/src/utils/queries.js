@@ -25,3 +25,13 @@ export const QUERY_USER_CONTACTS = gql`
     }
   }
 `;
+
+export const QUERY_USER = gql`
+  query user($_id: ID!) {
+      user (_id: $_id) {
+          userName
+      }
+  }
+
+
+`;

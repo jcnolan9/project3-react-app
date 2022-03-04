@@ -15,8 +15,8 @@ const ReminderList = ({ reminders, title }) => {
             <h2>{title}</h2>
             {reminders &&
                 reminders.map((reminder) => (
-                    <div key={reminder._id}>
-                        <h3>{reminder.contactType} {`${reminder.firstName} ${reminder.lastName}`}</h3>
+                    <div className="card" key={reminder._id}>
+                        <h3>{reminder.contactType} {`${reminder.contact.firstName} ${reminder.contact.lastName}`}</h3>
                         <p>at</p>
                         <p>{reminder.date}</p>
                         <Link to={`/reminders/${reminder.id}`}>

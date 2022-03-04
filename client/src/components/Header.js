@@ -10,6 +10,7 @@ const Header = () => {
     }
 
     //   console.log("username", Auth.getProfile().data.userName)
+    
 
     return (
         <header>
@@ -19,7 +20,7 @@ const Header = () => {
             <div>
                 {Auth.loggedIn() ? (
                     <>
-                       <p>Welcome {Auth.getProfile().data.userName}</p> 
+                       <p>Welcome {Auth.getProfile().data.email}</p> 
                        <button onClick={logout}>Logout</button>
                     </>
                     ) : (
