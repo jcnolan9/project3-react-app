@@ -50,7 +50,7 @@ const ContactForm = ({ user1 }) => {
               {Auth.loggedIn() ?
                      
                          <div className="card">
-                             <h4 className="text-light p-2 contact-header reminder-form-card-header">Create Contact</h4>
+                             <h2 className="text-light p-2 contact-header reminder-form-card-header">Create Contact</h2>
                              <div className="card-body">
                                      <form onSubmit={handleFormSubmit}>
                                          <div className='container'>
