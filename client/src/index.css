@@ -188,6 +188,15 @@ select {
   text-transform: none;
 }
 
+select {
+  min-width: 10%;
+  max-width: 25%;
+}
+
+option {
+  text-align: center;
+}
+
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */
@@ -1136,6 +1145,13 @@ a:hover {
   background-color: #2d3e50;
   color: #d9e9e8;
  
+}
+.message {
+  font-weight: bold;
+}
+
+.message-text {
+  margin-left: 30px;
 }
 
 .reminder-list-title {
