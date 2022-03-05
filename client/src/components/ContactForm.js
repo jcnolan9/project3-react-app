@@ -53,6 +53,7 @@ const ContactForm = ({ user1 }) => {
                              <h4 className="text-light p-2 contact-header reminder-form-card-header">Create Contact</h4>
                              <div className="card-body">
                                      <form onSubmit={handleFormSubmit}>
+                                         <div className='container'>
                                          <label for='firstName'>First Name:</label>
                                          <input
                                              className="reminder-form-input"
@@ -97,6 +98,8 @@ const ContactForm = ({ user1 }) => {
                                              onChange={handleChange}
                                          />
                                          <br></br>
+                                         
+                                         </div>
                                          <button
                                              className="btn btn-reverse btn-reminder"
                                              style={{ cursor: 'pointer' }}

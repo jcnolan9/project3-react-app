@@ -144,7 +144,7 @@ const ReminderForm = ({ contacts, user }) => {
                             
                         </div>
 
-                        <button className='btn btn-reverse btn-reminder' type='submit'>Create Reminder</button>
+                        <button className='btn btn-reverse btn-reminder' type='submit'>Submit</button>
 
                         {error && (
                             <div className="col-12 my-3 bg-danger text-white p-3">
