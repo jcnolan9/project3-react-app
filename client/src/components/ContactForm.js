@@ -86,7 +86,7 @@ const ContactForm = ({ user1 }) => {
                                              onChange={handleChange}
                                          />
                                          <br></br>
-                                         <label for='email'>Phone Number</label>
+                                         <label for='phoneNumber'>Phone Number</label>
                                          <input
                                              className="reminder-form-input"
                                              placeholder="******"

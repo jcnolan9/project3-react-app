@@ -9,6 +9,7 @@ const ReminderForm = ({ contacts, user }) => {
 
     console.log("MyUser:", user)
 
+    //swithcing to using formState method made the ReminderForm actually submit properly"
     const [formState, setFormState] = useState({
         contact: '',
         contactType: '',
