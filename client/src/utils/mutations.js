@@ -52,3 +52,16 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_CONTACT = gql`
+    mutation addContact($firstName: String!, $lastName: String!, $email: String!, $phoneNumber: String!, $contactOfUser: String!) {
+        addContact(firstName: $firstName, lastName: $lastName, email: $email, phoneNumber: $phoneNumber, contactOfUser: $contactOfUser) {
+            _id
+            firstName
+            lastName
+            email
+            phoneNumber
+            contactOfUser
+        }
+    }
+`;

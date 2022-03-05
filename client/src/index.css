@@ -1133,6 +1133,13 @@ a:hover {
   font-family: 'Days One', sans-serif;
 }
 
+.contact-header {
+  padding: 0.375rem;
+  border-radius: 10px 10px 0 0;
+  font-family: 'Days One', sans-serif;
+  background-color: #F0800B;
+}
+
 .reminder-header {
   padding: 0.375rem;
   background-color: #0A69A1;

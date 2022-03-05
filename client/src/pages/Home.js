@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import ReminderForm from '../components/ReminderForm';
 import ReminderList from '../components/ReminderList';
+import ContactForm from '../components/ContactForm';
 
 import { QUERY_USER_CONTACTS, QUERY_USER_REMINDERS, QUERY_USER } from '../utils/queries';
 import Auth from '../utils/auth'
@@ -47,7 +48,9 @@ const Home = () => {
     
     return (
         <main>
-            
+            <div>
+                <ContactForm user1={user}/>
+            </div>
             <div>
                 <ReminderForm contacts={contacts} user={user}/>
             </div>

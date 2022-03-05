@@ -90,7 +90,7 @@ const resolvers = {
             const contact = await Contact.create({ firstName, lastName, email, phoneNumber, contactOfUser })
 
             await User.findOneAndUpdate(
-                { username: contactOfUser},
+                { userName: contactOfUser},
                 { $addToSet: { contacts: contact._id }}
             )
 

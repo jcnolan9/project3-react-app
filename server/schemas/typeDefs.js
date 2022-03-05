@@ -18,7 +18,7 @@ const typeDefs = gql`
         lastName: String
         email: String
         phoneNumber: String
-        contactofUser: String
+        contactOfUser: String
     }
 
     type Reminder {

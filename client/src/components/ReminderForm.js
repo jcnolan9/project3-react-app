@@ -9,10 +9,18 @@ const ReminderForm = ({ contacts, user }) => {
 
     console.log("MyUser:", user)
 
-    const [reminderContact, setReminderContact] = useState('')
-    const [reminderContactType, setReminderContactType] = useState('')
-    const [reminderDate, setReminderDate] = useState(Date.now())
-    const [reminderMessage, setReminderMessage] = useState('')
+    const [formState, setFormState] = useState({
+        contact: '',
+        contactType: '',
+        date: '',
+        message: '',
+        reminderOfUser: user
+    })
+
+    // const [reminderContact, setReminderContact] = useState('')
+    // const [reminderContactType, setReminderContactType] = useState('')
+    // const [reminderDate, setReminderDate] = useState(Date.now())
+    // const [reminderMessage, setReminderMessage] = useState('')
 
     const [addReminder, { error, data }] = useMutation(ADD_REMINDER)
 
@@ -24,19 +32,22 @@ const ReminderForm = ({ contacts, user }) => {
 
         try {
             const { data } = await addReminder({
-                variables: {
-                    contact: reminderContact,
-                    contactType: reminderContactType,
-                    date: reminderDate,
-                    message: reminderMessage,
-                    reminderOfUser: user
-                }
+                // 
+                variables: { ...formState }
             })
 
-            setReminderContact('')
-            setReminderContactType('')
-            setReminderDate(Date.now().toLocaleString('en-US'))
-            setReminderMessage('')
+
+            setFormState({
+                contact: '',
+                contactType: '',
+                date: Date.now(),
+                message: ''
+            })
+
+            // setReminderContact('')
+            // setReminderContactType('')
+            // setReminderDate(Date.now().toLocaleString('en-US'))
+            // setReminderMessage('')
         } catch (err) {
             console.error(err)
         }
@@ -45,27 +56,32 @@ const ReminderForm = ({ contacts, user }) => {
     const handleChange = (event) => {
         const { name, value } = event.target
 
-        switch(name) {
-            case "contact":
-                setReminderContact(value)
-                break
-            case "contactType":
-                setReminderContactType(value)
-                break
-            case "date":
-                setReminderDate(value)
-                break
-            case "message":
-                setReminderMessage(value)
-                break
-        }
-        console.log("contact", {
-            contact: reminderContact,
-            contactType: reminderContactType,
-            date: reminderDate,
-            message: reminderMessage,
-            reminderOfUser: user
+        setFormState({
+            ...formState,
+            [name]: value,
         })
+        // switch(name) {
+        //     case "contact":
+        //         setReminderContact(value)
+        //         break
+        //     case "contactType":
+        //         setReminderContactType(value)
+        //         break
+        //     case "date":
+        //         setReminderDate(value)
+        //         break
+        //     case "message":
+        //         setReminderMessage(value)
+        //         break
+        // }
+        // console.log("contact", {
+        //     contact: reminderContact,
+        //     contactType: reminderContactType,
+        //     date: reminderDate,
+        //     message: reminderMessage,
+        //     reminderOfUser: user
+        // })
+        console.log("formState:", formState)
     }
 
     //if there is only 1 option in the select tag below the onChange for whatever reason never registers
@@ -83,7 +99,7 @@ const ReminderForm = ({ contacts, user }) => {
                         <div className='container '>
                             
                                 <label  for="contactList">Contact Name:</label>
-                                <select className='reminder-form-input' name="contact" id="contactList" value={reminderContact} onChange={handleChange}>
+                                <select className='reminder-form-input' name="contact" id="contactList" value={formState.contact} onChange={handleChange}>
                                     <option key="0" value=""></option>
                                     {
                                         contacts.map((userContact) => (
@@ -111,7 +127,7 @@ const ReminderForm = ({ contacts, user }) => {
 
                             <br></br>
                             <label className='' for="reminder-date">Date:</label>
-                            <input className='reminder-form-input' type="text" name='date' id="reminder-date" value={reminderDate} onChange={handleChange}></input>
+                            <input className='reminder-form-input' type="text" name='date' id="reminder-date" value={formState.date} onChange={handleChange}></input>
                             
                             <br></br>
 
@@ -119,7 +135,7 @@ const ReminderForm = ({ contacts, user }) => {
                             <textarea className='reminder-form-message' name="message"
                                 id="message" 
                                 placeholder="What do want to talk about..." 
-                                value={reminderMessage}
+                                value={formState.message}
                                 onChange={handleChange}
                             ></textarea>
                         
@@ -138,7 +154,7 @@ const ReminderForm = ({ contacts, user }) => {
                 </div>
             : (
                 <p>
-                    Please sign in to create a reminder. Please{' '}
+                    Please sign in to create you contacts and reminders. Please{' '}
                     <Link to="/login">login</Link> or <Link to="/signup">singup.</Link>
                 </p>
             )}
