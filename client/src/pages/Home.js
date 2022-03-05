@@ -26,8 +26,8 @@ const Home = () => {
     const contacts = data?.userContacts || []
     //you cannot do data.userContacts but the data?.userContacts syntax works for whatever reason
 
-
-    //if more than 1 query on a page have to do "data:reminderData"
+    
+     //if more than 1 query on a page have to do "data:reminderData"
     const { loading: remindersLoading, data: remindersData } = useQuery(QUERY_USER_REMINDERS, {
         variables: {userName: user}
     })
@@ -35,7 +35,7 @@ const Home = () => {
     console.log("remindersData", reminders)
 
     // let myUser
-
+    // const [reminderList, setReminderList] = useState(reminders)
 
 
     // if(Auth.loggedIn()) {
@@ -48,12 +48,15 @@ const Home = () => {
     
     return (
         <main>
-            <div>
-                <ContactForm user1={user}/>
+            <div className='form-container flex-row align-content-stretch justify-space-between'>
+                <div className=''>
+                    <ContactForm user1={user}/>
+                </div>
+                <div className='' >
+                    <ReminderForm contacts={contacts} user={user}/>
+                </div>
             </div>
-            <div>
-                <ReminderForm contacts={contacts} user={user}/>
-            </div>
+            
             <div>
                 <ReminderList reminders={reminders} title="Upcoming Reminders"/>
             </div>

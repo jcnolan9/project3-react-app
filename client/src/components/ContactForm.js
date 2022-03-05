@@ -49,7 +49,7 @@ const ContactForm = ({ user1 }) => {
           <div>
               {Auth.loggedIn() ?
                      
-                         <div className="card">
+                         <div className="card contact-card">
                              <h2 className="text-light p-2 contact-header reminder-form-card-header">Create Contact</h2>
                              <div className="card-body">
                                      <form onSubmit={handleFormSubmit}>

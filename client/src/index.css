@@ -1278,6 +1278,29 @@ label form [type='radio'] {
   gap: 10px;
 }
 
+/* .extra-margin {
+  margin-right: 40%;
+} */
+
+.reminder-card {
+  width: 120%;
+  /* margin-right: 40%; */
+}
+
+.contact-card {
+  width: 120%;
+  margin-left: -20%;
+}
+
+.form-container {
+    width: 85%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 10px;
+  
+}
+
 .container.container-fluid {
   width: 92%;
 }

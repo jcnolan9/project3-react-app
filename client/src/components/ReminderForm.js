@@ -9,6 +9,9 @@ const ReminderForm = ({ contacts, user }) => {
 
     console.log("MyUser:", user)
 
+    // const [contactsList, setContactsList] = useState(contacts)
+    // console.log("Contacts List:", contactsList)
+
     //swithcing to using formState method made the ReminderForm actually submit properly"
     const [formState, setFormState] = useState({
         contact: '',
@@ -17,6 +20,8 @@ const ReminderForm = ({ contacts, user }) => {
         message: '',
         reminderOfUser: user
     })
+
+    
 
     // const [reminderContact, setReminderContact] = useState('')
     // const [reminderContactType, setReminderContactType] = useState('')
@@ -28,6 +33,8 @@ const ReminderForm = ({ contacts, user }) => {
 
     // console.log("Logged In:", Auth.getProfile().data.username)
     
+    
+
     const handleFormSubmit = async (event) => {
         event.preventDefault()
 
@@ -44,6 +51,8 @@ const ReminderForm = ({ contacts, user }) => {
                 date: Date.now(),
                 message: ''
             })
+
+            // setContactsList(contacts)
 
             // setReminderContact('')
             // setReminderContactType('')
@@ -92,12 +101,12 @@ const ReminderForm = ({ contacts, user }) => {
         <div>
            
             {Auth.loggedIn() ?
-                <div className='card'>
+                <div className='card reminder-card'>
                
-                    <h2 className='login-header text-light reminder-form-card-header'>Create Reminder</h2>
+                    <h2 className='login-header text-light reminder-form-card-header extra-margin'>Create Reminder</h2>
 
                     <form onSubmit={handleFormSubmit}>
-                        <div className='container '>
+                        <div className='form-container'>
                             
                                 <label  for="contactList">Contact Name:</label>
                                 <select className='reminder-form-input' name="contact" id="contactList" value={formState.contact} onChange={handleChange}>
