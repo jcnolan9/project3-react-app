@@ -10,4 +10,4 @@ The front-end uses React, CSS, and GraphQL.
 ![screenshot of Keep In Touch App](https://github.com/jcnolan9/project3-react-app/blob/main/appScreenshot.PNG)
 
 ## Link to Deployed App
-- https://limitless-oasis-33930.herokuapp.com/
+https://secret-island-85004.herokuapp.com/
