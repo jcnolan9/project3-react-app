@@ -39,7 +39,7 @@ const typeDefs = gql`
         users: [User]
         user(_id: ID!): User
         contacts: [Contact]
-        reminders: [Reminder]
+        reminders(_id: ID!): Reminder
         userContacts(userName: String!): [Contact] 
         userReminders(userName: String!): [Reminder] 
     }

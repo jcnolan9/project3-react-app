@@ -32,6 +32,20 @@ export const QUERY_USER = gql`
           userName
       }
   }
+`;
 
-
+export const QUERY_REMINDER =gql`
+  query reminders($_id: ID!) {
+      reminders(_id: $_id) {
+        contact {
+            _id
+            firstName
+            lastName
+          }
+        contactType
+        date
+        message
+        reminderOfUser
+    }
+  }
 `;

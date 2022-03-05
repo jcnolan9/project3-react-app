@@ -9,33 +9,27 @@ import Auth from '../utils/auth'
 
 
 const Home = () => {
+  
+
+    let user
+    if(Auth.loggedIn()) {
+        user = Auth.getProfile().data.userName
+    }
+    //if nobody is logged in doing Ath.getProfile()... breaks the page so it must be in conditional to render at all times 
+    
     //this must be named "data"
     //loading, data, and err are keywords
-    // let personLoggedIn
-
-    
-    const user = Auth.getProfile().data.userName
-    
-
-    // console.log("Logged In:", personLoggedIn)
-
     const { loading, data } = useQuery(QUERY_USER_CONTACTS, {
-        variables: { userName: "dknuth" }
+        variables: { userName: user }
     })
     const contacts = data?.userContacts || []
     //you cannot do data.userContacts but the data?.userContacts syntax works for whatever reason
 
-    // console.log("contacts Home", data)
-    // console.log(contacts)
-    // console.log('Loading', loading)
-    // console.log('err', err)
 
     //if more than 1 query on a page have to do "data:reminderData"
     const { loading: remindersLoading, data: remindersData } = useQuery(QUERY_USER_REMINDERS, {
-        variables: {userName: "dknuth"}
+        variables: {userName: user}
     })
-
-    // console.log("reminderData", data)
     const reminders = remindersData?.userReminders || []
     console.log("remindersData", reminders)
 

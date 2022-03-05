@@ -75,49 +75,59 @@ const ReminderForm = ({ contacts, user }) => {
         <div>
            
             {Auth.loggedIn() ?
-                <>
-                    <h2>Create Reminder</h2>
+                <div className='card'>
+               
+                    <h2 className='login-header text-light reminder-form-card-header'>Create Reminder</h2>
 
                     <form onSubmit={handleFormSubmit}>
-                        <div>
-                            <label for="contactList">Contact:</label>
-                            <select name="contact" id="contactList" value={reminderContact} onChange={handleChange}>
-                                <option key="0" value=""></option>
-                                {
-                                    contacts.map((userContact) => (
-                                        <option key={userContact._id} value={userContact._id}>
-                                            {`${userContact.firstName} ${userContact.lastName}`}
-                                        </option>
-                                    ))
-                                }
-                            </select>
+                        <div className='container '>
+                            
+                                <label  for="contactList">Contact Name:</label>
+                                <select className='reminder-form-input' name="contact" id="contactList" value={reminderContact} onChange={handleChange}>
+                                    <option key="0" value=""></option>
+                                    {
+                                        contacts.map((userContact) => (
+                                            <option key={userContact._id} value={userContact._id}>
+                                                {`${userContact.firstName} ${userContact.lastName}`}
+                                            </option>
+                                        ))
+                                    }
+                                </select>
+                           
+                            
                             <br></br>
                             
-                            
-                            <input type="radio" id="text" name="contactType" value="text" onChange={handleChange} />
-                            <label for="text">Text</label>
-                            
-                            <input type="radio" id="email" name="contactType" value="email" onChange={handleChange}/>
-                            <label for="email">Email</label>
-                            
-                            <input type="radio" id="phone" name="contactType" value="phone" onChange={handleChange}/>
-                            <label for="text">Phone Call</label>
-                            <br></br>
+                            <label>
+                                How to Reach:
+                                <input className='reminder-form-input-radio' type="radio" id="text" name="contactType" value="text" onChange={handleChange} />
+                                <label for="text">Text</label>
+                                
+                                <input className='reminder-form-input-radio' type="radio" id="email" name="contactType" value="email" onChange={handleChange}/>
+                                <label for="email">Email</label>
+                                
+                                <input className='reminder-form-input-radio' type="radio" id="phone" name="contactType" value="phone" onChange={handleChange}/>
+                                <label for="text">Phone Call</label>
+                            </label>
 
-                            <label for="reminder-date">Date:</label>
-                            <input type="text" name='date' id="reminder-date" value={reminderDate} onChange={handleChange}></input>
+                            <br></br>
+                            <label className='' for="reminder-date">Date:</label>
+                            <input className='reminder-form-input' type="text" name='date' id="reminder-date" value={reminderDate} onChange={handleChange}></input>
+                            
                             <br></br>
 
                             <label for="message">Message:</label><br></br>
-                            <textarea name="message"
+                            <textarea className='reminder-form-message' name="message"
                                 id="message" 
                                 placeholder="What do want to talk about..." 
                                 value={reminderMessage}
                                 onChange={handleChange}
                             ></textarea>
-                        </div>
                         
-                        <button type='submit'>Create Reminder</button>
+                            <br></br>
+                            
+                        </div>
+
+                        <button className='btn btn-reverse btn-reminder' type='submit'>Create Reminder</button>
 
                         {error && (
                             <div className="col-12 my-3 bg-danger text-white p-3">
@@ -125,7 +135,7 @@ const ReminderForm = ({ contacts, user }) => {
                             </div>
                         )}
                     </form>
-                </>
+                </div>
             : (
                 <p>
                     Please sign in to create a reminder. Please{' '}

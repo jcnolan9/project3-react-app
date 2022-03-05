@@ -48,7 +48,7 @@ const Login = (props) => {
       <main className="flex-row justify-center mb-4">
         <div className="col-12 col-lg-10">
           <div className="card">
-            <h4 className="card-header bg-dark text-light p-2">Login</h4>
+            <h4 className="text-light p-2 login-header">Login</h4>
             <div className="card-body">
               {data ? (
                 <p>
@@ -57,24 +57,28 @@ const Login = (props) => {
                 </p>
               ) : (
                 <form onSubmit={handleFormSubmit}>
+                  <label for='email'>Email:</label>
                   <input
                     className="form-input"
                     placeholder="Your email"
+                    id='email'
                     name="email"
                     type="email"
                     value={formState.email}
                     onChange={handleChange}
                   />
+                  <label for='password'>Password:</label>
                   <input
                     className="form-input"
                     placeholder="******"
+                    id='password'
                     name="password"
                     type="password"
                     value={formState.password}
                     onChange={handleChange}
                   />
                   <button
-                    className="btn btn-block btn-primary"
+                    className="btn btn-block btn-reverse"
                     style={{ cursor: 'pointer' }}
                     type="submit"
                   >

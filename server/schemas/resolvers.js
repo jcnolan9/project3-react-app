@@ -23,8 +23,8 @@ const resolvers = {
         contacts: async () => {
             return Contact.find()
         },
-        reminders: async () => {
-            return Reminder.find().populate('contact')
+        reminders: async (parent, { _id }) => {
+            return Reminder.findOne({ _id }).populate('contact')
         },
         userContacts: async (parent, { userName }) => {
             console.log()
